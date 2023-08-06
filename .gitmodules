@@ -4,6 +4,3 @@
 [submodule "lib"]
 	path = lib
 	url = git@github.com:cacost12/lib.git
-[submodule "mod"]
-	path = mod
-	url = git@github.com:cacost12/mod.git
