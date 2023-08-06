@@ -31,6 +31,9 @@ BUILD_DIR = build
 # Library directory
 LIB_DIR = ../../../lib
 
+# Driver Directory
+DRIVER_DIR = ../../../driver
+
 # Module Directory
 MOD_DIR = ../../../mod
 
@@ -50,17 +53,18 @@ main.c                                                                \
 press_fifo.c                                                          \
 data_logger.c                                                         \
 terminal.c                                                            \
+$(MOD_DIR)/command_handler/command_handler.c                          \
 $(INIT_DIR)/init.c                                                    \
 $(UTIL_DIR)/sdr_error.c                                               \
-$(MOD_DIR)/baro/baro.c                                                \
-$(MOD_DIR)/buzzer/buzzer.c                                            \
-$(MOD_DIR)/commands/commands.c                                        \
-$(MOD_DIR)/flash/flash.c                                              \
-$(MOD_DIR)/ignition/ignition.c                                        \
-$(MOD_DIR)/imu/imu.c                                                  \
-$(MOD_DIR)/led/led.c                                                  \
+$(DRIVER_DIR)/baro/baro.c                                                \
+$(DRIVER_DIR)/buzzer/buzzer.c                                            \
+$(DRIVER_DIR)/commands/commands.c                                        \
+$(DRIVER_DIR)/flash/flash.c                                              \
+$(DRIVER_DIR)/ignition/ignition.c                                        \
+$(DRIVER_DIR)/imu/imu.c                                                  \
+$(DRIVER_DIR)/led/led.c                                                  \
 $(MOD_DIR)/sensor/sensor.c                                            \
-$(MOD_DIR)/usb/usb.c                                                  \
+$(DRIVER_DIR)/usb/usb.c                                                  \
 $(INIT_DIR)/config/Src/stm32h7xx_it.c                                 \
 $(INIT_DIR)/config/Src/stm32h7xx_hal_msp.c                            \
 $(INIT_DIR)/config/Src/system_stm32h7xx.c                             \
@@ -162,18 +166,19 @@ AS_INCLUDES =
 # C includes
 C_INCLUDES =                                           \
 -I.                                                    \
+-I$(MOD_DIR)/command_handler                           \
 -I$(LIB_DIR)                                           \
 -I$(INIT_DIR)                                          \
 -I$(INIT_DIR)/config/Inc                               \
--I$(MOD_DIR)/baro                                      \
--I$(MOD_DIR)/buzzer                                    \
--I$(MOD_DIR)/commands                                  \
--I$(MOD_DIR)/flash                                     \
--I$(MOD_DIR)/ignition                                  \
--I$(MOD_DIR)/imu                                       \
--I$(MOD_DIR)/led                                       \
+-I$(DRIVER_DIR)/baro                                      \
+-I$(DRIVER_DIR)/buzzer                                    \
+-I$(DRIVER_DIR)/commands                                  \
+-I$(DRIVER_DIR)/flash                                     \
+-I$(DRIVER_DIR)/ignition                                  \
+-I$(DRIVER_DIR)/imu                                       \
+-I$(DRIVER_DIR)/led                                       \
 -I$(MOD_DIR)/sensor                                    \
--I$(MOD_DIR)/usb                                       \
+-I$(DRIVER_DIR)/usb                                       \
 -I$(UTIL_DIR)                                          \
 -I$(LIB_DIR)/Drivers/STM32H7xx_HAL_Driver/Inc          \
 -I$(LIB_DIR)/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy   \

@@ -27,7 +27,10 @@ OPT = -Og
 # Build path
 BUILD_DIR = build
 
-# Module directory
+# Driver directory
+DRIVER_DIR = ../../driver
+
+# Module director
 MOD_DIR = ../../mod
 
 # Library Directory
@@ -48,7 +51,7 @@ $(INIT_DIR)/init.c                                                  \
 $(INIT_DIR)/config/Src/stm32h7xx_it.c                               \
 $(INIT_DIR)/config/Src/stm32h7xx_hal_msp.c                          \
 $(INIT_DIR)/config/Src/system_stm32h7xx.c                           \
-$(MOD_DIR)/led/led.c                                                \
+$(DRIVER_DIR)/led/led.c                                                \
 $(LIB_DIR)/util/zav_error.c                                         \
 $(LIB_DIR)/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c  \
 $(LIB_DIR)Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c      \
@@ -129,7 +132,7 @@ AS_INCLUDES =
 # C includes
 C_INCLUDES =                                           \
 -I.                                                    \
--I$(MOD_DIR)/led                                       \
+-I$(DRIVER_DIR)/led                                       \
 -I$(LIB_DIR)                                           \
 -I$(LIB_DIR)/util                                      \
 -I$(INIT_DIR)                                          \

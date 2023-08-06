@@ -61,8 +61,6 @@ int main
 /*------------------------------------------------------------------------------
  Local Variables                                                                
 ------------------------------------------------------------------------------*/
-uint8_t       command;         /* USB Incoming command        */
-USB_STATUS    usb_status;      /* Status of USB HAL           */
 FLASH_CONFIG  flash_config;    /* Flash chip configuration    */
 BARO_CONFIG   baro_configs;    /* Baro sensor config settings */
 IMU_CONFIG    imu_configs;     /* IMU config settings         */
@@ -114,9 +112,6 @@ imu_configs.mag_op_mode        = MAG_NORMAL_MODE;
 imu_configs.mag_xy_repititions = 9; /* BMM150 Regular Preset Recomendation */
 imu_configs.mag_z_repititions  = 15;
 
-/* Module return codes */
-usb_status                     = USB_OK;
-
 
 /*------------------------------------------------------------------------------
  External Hardware Initializations 
@@ -152,17 +147,7 @@ led_set_color( LED_GREEN );
 ------------------------------------------------------------------------------*/
 while (1)
 	{
-	/* Check for USB connection */
-	if ( usb_detect() )
-		{
-		/* Get command from USB port */
-		usb_status = usb_receive( &command, sizeof( command ), USB_DEFAULT_TIMEOUT );
-		if ( usb_status == USB_OK )
-			{
-			command_handler( command );
-			}
-
-		} 
+	command_handler_loop();
 	}
 } /* main */
 
